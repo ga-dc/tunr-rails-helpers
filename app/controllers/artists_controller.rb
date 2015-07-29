@@ -13,7 +13,7 @@ class ArtistsController < ApplicationController
   def create
     @artist = Artist.create!(artist_params)
 
-    redirect_to "/artists/#{@artist.id}"
+    redirect_to artist_path(@artist)
   end
 
   #show
@@ -32,7 +32,8 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     @artist.update(artist_params)
 
-    redirect_to "/artists/#{@artist.id}"
+
+    redirect_to artist_path(@artist)
   end
 
   # destroy
@@ -40,7 +41,7 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     @artist.destroy
 
-    redirect_to "/artists"
+    redirect_to artists_path
   end
 
   private
